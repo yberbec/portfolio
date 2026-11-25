@@ -1,0 +1,16 @@
+// Cloudflare Workers config: serves the built Angular app as static assets.
+{
+  // Must match the Worker's name in the Cloudflare dashboard.
+  "name": "yberbeche",
+  "compatibility_date": "2025-09-01",
+  // Publish at https://yberbeche.yberbeche.workers.dev
+  "workers_dev": true,
+  "build": {
+    "command": "npm run build"
+  },
+  "assets": {
+    "directory": "./dist/yahya-pixel-portfolio/browser",
+    // Any unknown path (e.g. /education on refresh) gets index.html so the Angular router can handle it.
+    "not_found_handling": "single-page-application"
+  }
+}
