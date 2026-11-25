@@ -27,7 +27,7 @@ import { shortDate, timeAgo } from '../live/live-utils';
         <div class="social-row">
           <a [href]="linkedInUrl" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a [href]="'mailto:' + email">Email ↗</a>
+          @if (email) { <a [href]="'mailto:' + email">Email ↗</a> } @else { <a routerLink="/contact">Contact ↗</a> }
         </div>
       </div>
 

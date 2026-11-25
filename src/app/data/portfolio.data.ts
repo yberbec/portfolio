@@ -1,3 +1,5 @@
+import { LIVE_CONFIG } from '../config';
+
 export interface CaseStudy {
   id: string;
   number: string;
@@ -40,7 +42,8 @@ export interface EducationItem {
   detail: string;
 }
 
-export const EMAIL = 'yberbeche@gmail.com';
+/** Public contact address (a forwarding alias). Set it in config.ts; empty means none is shown. */
+export const EMAIL = LIVE_CONFIG.contact.email;
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/yahya-berbeche';
 export const GITHUB_URL = 'https://github.com/yberbec';
 

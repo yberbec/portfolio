@@ -16,6 +16,15 @@ export const LIVE_CONFIG = {
     /** A Last.fm API key (public, read-only). Create one at https://www.last.fm/api/account/create */
     apiKey: 'ffecc9629df4c0e4c099cdcb040e332b'
   },
+  contact: {
+    /**
+     * Public email shown on the site: a forwarding alias, never your real inbox.
+     * Leave empty to show no address at all.
+     */
+    email: '',
+    /** Web3Forms access key for the contact form (public-safe). Get one at https://web3forms.com. Empty hides the form. */
+    web3formsKey: ''
+  },
   location: {
     city: 'Montréal',
     latitude: 45.5017,

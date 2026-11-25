@@ -39,7 +39,7 @@ function buildIndex(): SearchEntry[] {
     { section: 'Page', title: 'Education', path: ['/education'], keywords: 'education degrees school university studies diploma certifications credentials learning', text: 'Education & certifications. ' + EDUCATION.map(e => `${e.title}, ${e.detail} (${e.dates})`).join('. ') + '. ' + LANGUAGES_NOTE },
     { section: 'Page', title: 'Shipping', path: ['/shipping'], keywords: 'shipping github git commits merges pull requests releases activity contributions open source', text: 'What I shipped: live commits, pushes, merged pull requests and releases from my public GitHub repositories, with a contribution heatmap.' },
     { section: 'Page', title: 'Music', path: ['/music'], keywords: 'music listening now playing songs last.fm spotify record player', text: 'What I am playing right now: the current or last played track, recent plays and top artists, live from Last.fm.' },
-    { section: 'Page', title: 'Contact', path: ['/contact'], keywords: 'contact email hire reach linkedin github talk', text: `Let's build something that matters. Open to Java backend opportunities in Montréal and beyond. ${EMAIL}` }
+    { section: 'Page', title: 'Contact', path: ['/contact'], keywords: 'contact email hire reach linkedin github talk', text: `Let's build something that matters. Open to Java backend opportunities in Montréal and beyond. Send me a message through the contact form. ${EMAIL}`.trim() }
   ];
 
   for (const s of CASE_STUDIES) {

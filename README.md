@@ -48,7 +48,7 @@ Each case study includes project context, documented contributions, a high-level
 
 ## Contact details
 
-- Email: yberbeche@gmail.com
+- Email: via the contact form on the site
 - LinkedIn: https://www.linkedin.com/in/yahya-berbeche
 - GitHub: https://github.com/yberbec
 
