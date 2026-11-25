@@ -10,7 +10,7 @@ const suffix = ' · Yahya Berbeche';
 export const routes: Routes = [
   { path: '', component: HomePage, title: 'Yahya Berbeche — Java Backend Developer' },
   { path: 'work', component: WorkPage, title: 'Work' + suffix },
-  { path: 'work/:id', component: CaseStudyPage }, // title set by the page itself
+  { path: 'work/:id', component: CaseStudyPage }, // title set by the page itself.
   { path: 'experience', component: ExperiencePage, title: 'Experience' + suffix },
   { path: 'about', component: AboutPage, title: 'About' + suffix },
   { path: 'skills', component: SkillsPage, title: 'Skills' + suffix },
