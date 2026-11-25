@@ -1,0 +1,32 @@
+<div class="site-shell">
+  <header class="topbar">
+    <a class="brand pixel-font" routerLink="/" aria-label="Yahya Berbeche home">YB<span class="cursor">_</span></a>
+    <nav aria-label="Main navigation">
+      @for (item of nav; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active" ariaCurrentWhenActive="page">{{ item.label }}</a>
+      }
+    </nav>
+    <div class="topbar-actions">
+      <button class="search-trigger" type="button" (click)="openSearch()" aria-label="Search the site (press /)">
+        <span class="search-trigger-icon" aria-hidden="true">⌕</span><span class="search-trigger-label">Search</span><kbd>/</kbd>
+      </button>
+      <div class="theme-switch" role="radiogroup" aria-label="Theme">
+        @for (option of themes; track option.mode) {
+          <button type="button" role="radio" [attr.aria-checked]="theme.mode() === option.mode" [class.on]="theme.mode() === option.mode" (click)="theme.set(option.mode)" [title]="option.title" [attr.aria-label]="option.label">
+            <span class="theme-icon" aria-hidden="true">{{ option.icon }}</span><span class="theme-text">{{ option.label }}</span>
+          </button>
+        }
+      </div>
+    </div>
+  </header>
+
+  <main id="home" class="page-main">
+    <router-outlet />
+  </main>
+
+  @if (searchOpen()) {
+    <app-search-dialog (close)="closeSearch()" />
+  }
+
+  <footer class="footer section-wrap"><a class="brand pixel-font" routerLink="/">YB<span class="cursor">_</span></a><span class="mono">DESIGNED & BUILT WITH ANGULAR · MONTRÉAL, QC</span><a href="#" class="mono" (click)="$event.preventDefault(); scrollTop()">BACK TO TOP ↑</a></footer>
+</div>
