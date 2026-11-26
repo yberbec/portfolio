@@ -7,8 +7,8 @@ export const LIVE_CONFIG = {
     user: 'yberbec',
     /** How many recently-pushed repos to read commits from for the Shipping feed. */
     commitRepos: 3,
-    /** Repos to leave out of the feed and repo lists (e.g. profile-README repos). */
-    excludeRepos: ['yberbec', 'Yahya-Berbeche']
+    /** Repos to leave out of the feed and repo lists (profile-README repos and this portfolio's own repo). */
+    excludeRepos: ['yberbec', 'Yahya-Berbeche', 'portfolio']
   },
   lastfm: {
     /** Your Last.fm username, e.g. 'yberbec'. Leave empty to show the setup card. */
