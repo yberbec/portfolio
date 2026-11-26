@@ -75,7 +75,12 @@ export class SkillsPage {
       <div class="section-heading"><div><p class="eyebrow pixel-font">05 / LEARNING & CREDENTIALS</p><h2>Education & <span>certifications.</span></h2></div></div>
       <div class="education-grid">
         @for (item of items; track item.id) {
-          <div class="education-card" [id]="item.id"><span class="project-meta mono">{{ item.dates }}</span><h3>{{ item.title }}</h3><p>{{ item.detail }}</p></div>
+          <div class="education-card" [id]="item.id">
+            <span class="project-meta mono">{{ item.dates }}</span><h3>{{ item.title }}</h3><p>{{ item.detail }}</p>
+            @if (item.verifyUrl) {
+              <a class="button secondary verify-link" [href]="item.verifyUrl" target="_blank" rel="noopener noreferrer" [attr.aria-label]="'Verify ' + item.title + ' credential (opens in a new tab)'">✓ Verify credential ↗</a>
+            }
+          </div>
         }
       </div>
       <p class="education-note">{{ note }}</p>

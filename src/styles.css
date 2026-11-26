@@ -122,6 +122,9 @@ nav a:hover:after,nav a:focus-visible:after{right:0}
 .education-card:hover{transform:translateY(-3px);border-color:var(--accent)}
 .education-card h3{font-size:16px;line-height:1.45;margin:12px 0 8px}
 .education-card p,.education-note{color:var(--muted);font-size:13px;line-height:1.7}
+.education-card{display:flex;flex-direction:column}.education-card p{margin-bottom:16px}
+.verify-link{align-self:flex-start;margin-top:auto;padding:9px 13px;font-size:11px;gap:8px;transition:border-color .2s,color .2s}
+.verify-link:hover,.verify-link:focus-visible{border-color:var(--accent);color:var(--accent)}
 .education-note{margin-top:22px;font-family:'DM Mono',monospace;font-size:11px}
 .stack-grid small{display:block;color:var(--muted);font-size:10px;margin-top:8px;line-height:1.5}
 @media(max-width:650px){.education-grid{grid-template-columns:1fr}.case-study-grid .project-info{padding-bottom:20px}}

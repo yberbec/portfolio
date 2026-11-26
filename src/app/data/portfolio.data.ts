@@ -40,6 +40,8 @@ export interface EducationItem {
   dates: string;
   title: string;
   detail: string;
+  /** Public page where anyone can check the credential is genuine. */
+  verifyUrl?: string;
 }
 
 /** Public contact address (a forwarding alias). Set it in config.ts; empty means none is shown. */
@@ -71,8 +73,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     flowTitle: 'Integration flow',
     flow: ['Incoming data', 'REST API', 'Client schema mapping', 'Asynchronous synchronization', 'Adobe Experience Platform'],
     technologies: ['Java', 'Spring Boot', 'REST APIs', 'Microservices', 'Adobe Experience Platform', 'Grafana'],
-    outcome: 'Delivered an API-based integration with asynchronous synchronization, latency improvements and performance monitoring.',
-    notes: 'The CV does not specify exact throughput, latency figures or the underlying messaging technology, so these are intentionally not claimed.'
+    outcome: 'Delivered an API-based integration with asynchronous synchronization, latency improvements and performance monitoring.'
   },
   {
     id: 'pickup-points',
@@ -137,7 +138,8 @@ export const CASE_STUDIES: CaseStudy[] = [
     context: 'Alongside feature development, the Nespresso work included Build and Production responsibilities focused on service reliability and maintainability.',
     contribution: [
       'Refactored legacy code and implemented unit tests.',
-      'Contributed to a reported 30% reduction in bugs.',
+      'Reduced bugs by 30% through that refactoring and test coverage.',
+      'Wrote solution architecture documents for new features and technical improvements.',
       'Analyzed production logs with Kibana and monitored services with Grafana.',
       'Managed incidents through ServiceNow and participated in on-call rotations.',
       'Supported continuous integration, monitoring and production issue resolution.'
@@ -145,7 +147,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     flowTitle: 'Reliability workflow',
     flow: ['Production signals & logs', 'Kibana / Grafana analysis', 'Incident investigation', 'Fixes & unit tests', 'Service stability'],
     technologies: ['Java', 'Spring', 'JUnit', 'Mockito', 'TDD', 'Jenkins', 'Kibana', 'Grafana', 'ServiceNow'],
-    outcome: 'The CV reports a 30% reduction in bugs from legacy-code refactoring and unit-test implementation. Production work also included monitoring, incident resolution and on-call support.'
+    outcome: 'Legacy-code refactoring and unit tests cut bugs by 30%, while monitoring, incident resolution and on-call support kept production services stable.'
   }
 ];
 
@@ -175,7 +177,7 @@ export const EXPERIENCE: ExperienceItem[] = [
     location: 'RABAT, MOROCCO',
     role: 'Software Developer',
     company: 'SQLI · Nespresso project',
-    description: "Worked across Build and Production teams on Nespresso's e-commerce microservices. Delivered pickup-point, ratings/reviews and Adobe Experience Platform integrations; refactored legacy code and implemented unit tests, contributing to a reported 30% reduction in bugs. Also supported production through monitoring, incident management and on-call rotations.",
+    description: "Worked across Build and Production teams on Nespresso's e-commerce microservices. Delivered pickup-point, ratings/reviews and Adobe Experience Platform integrations, supported the Retail services and wrote solution architecture documents. Refactored legacy code and implemented unit tests, reducing bugs by 30%. Also supported production through monitoring, incident management and on-call rotations, working with international teams in Agile/Scrum.",
     technologies: ['Java', 'Spring Boot', 'Microservices', 'REST', 'SOAP', 'Docker', 'Jenkins', 'Kibana', 'Grafana', 'ServiceNow', 'TDD'],
     caseStudyId: 'quality-reliability',
     caseStudyLabel: 'Explore code quality & production work'
@@ -187,13 +189,14 @@ export const SKILLS: SkillGroup[] = [
   { id: 'frontend', label: 'FRONTEND', items: 'TypeScript · JavaScript · Angular · HTML · CSS' },
   { id: 'databases', label: 'DATABASES', items: 'Oracle · Microsoft SQL Server · MySQL · Access · PostgreSQL (personal project)' },
   { id: 'tools', label: 'TOOLS & DELIVERY', items: 'Git · Bitbucket · Maven · Jenkins · Docker · SonarQube · JUnit · Mockito · Tomcat · Jira · ServiceNow' },
+  { id: 'design', label: 'DESIGN & METHODS', items: 'MVC · Design Patterns · UML · Agile · Scrum' },
   { id: 'monitoring', label: 'MONITORING & VISUALIZATION', items: 'Kibana · Grafana' },
-  { id: 'cloud', label: 'CLOUD', items: 'AWS · EC2 · S3 · IAM · RDS · VPC · CloudWatch · Lambda · API Gateway', note: 'Cloud technologies listed in my technical skills.' }
+  { id: 'cloud', label: 'CLOUD', items: 'AWS · EC2 · S3 · IAM · RDS · VPC · CloudWatch · Lambda · API Gateway' }
 ];
 
 export const EDUCATION: EducationItem[] = [
   { id: 'master', kind: 'Education', dates: '2019 — 2021', title: "Master's Degree · Software Quality", detail: 'Faculty of Sciences, University of Fez · Morocco' },
   { id: 'bachelor', kind: 'Education', dates: '2015 — 2019', title: "Bachelor's Degree · Mathematics & Computer Science", detail: 'Faculty of Sciences, University of Fez · Morocco' },
-  { id: 'oracle-java', kind: 'Certification', dates: '2024', title: 'Oracle Certified Professional', detail: 'Java SE 17 Developer' },
-  { id: 'scrum-psd', kind: 'Certification', dates: '2024', title: 'Professional Scrum Developer I', detail: 'Scrum.org certification' }
+  { id: 'oracle-java', kind: 'Certification', dates: '2024', title: 'Oracle Certified Professional', detail: 'Java SE 17 Developer · Oracle', verifyUrl: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=B5A4F52B6BEAEE96C394853C156D0CED79DF3C6E82B9399A9CB761DF1E011D57' },
+  { id: 'scrum-psd', kind: 'Certification', dates: '2024', title: 'Professional Scrum Developer I', detail: 'PSD I · Scrum.org', verifyUrl: 'https://www.credly.com/badges/266924af-1fc3-4a6e-86fc-776bf3a8ff3b' }
 ];
