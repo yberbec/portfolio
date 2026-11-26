@@ -95,7 +95,7 @@ export class EducationPage {
       <div class="section-wrap contact-inner">
         <p class="eyebrow pixel-font">06 / HAVE A PROJECT IN MIND?</p>
         <h2>Let's build something<br><span>that matters.</span></h2>
-        <p>Open to Java backend opportunities and interesting engineering conversations in Montréal and beyond.</p>
+        <p>Open to software engineering opportunities and interesting engineering conversations in Montréal and beyond.</p>
         @if (formEnabled) {
           @if (status() === 'sent') {
             <div class="contact-sent" role="status">

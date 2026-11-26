@@ -118,12 +118,12 @@ export class ShippingPage implements OnInit {
           <div class="live-card live-skeleton" aria-busy="true">Dropping the needle…</div>
         }
 
-        @if (music.tracks().length > 1 || music.topArtists().length) {
+        @if (music.history().length || music.topArtists().length) {
         <div class="ship-columns">
           <div class="live-card">
-            <div class="live-card-head"><h3>Recently played</h3><a class="text-link" [href]="music.profileUrl" target="_blank" rel="noopener noreferrer">Last.fm ↗</a></div>
+            <div class="live-card-head"><h3>Last {{ music.history().length }} plays</h3><a class="text-link" [href]="music.profileUrl" target="_blank" rel="noopener noreferrer">Last.fm ↗</a></div>
             <ol class="track-list">
-              @for (t of music.tracks().slice(1); track $index) {
+              @for (t of music.history(); track $index) {
                 <li>
                   @if (t.image) { <img [src]="t.image" alt="" loading="lazy" /> } @else { <span class="track-noart">♪</span> }
                   <a [href]="t.url" target="_blank" rel="noopener noreferrer"><b>{{ t.name }}</b><span>{{ t.artist }}</span></a>

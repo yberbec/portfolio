@@ -161,3 +161,6 @@ a.live-card:hover,a.live-card:focus-visible{transform:translateY(-3px);border-co
 .contact-sent button{border:0;background:none;cursor:pointer;padding:0}
 .contact-form + .contact-actions{margin-top:22px}
 @media(max-width:560px){.contact-form-row{grid-template-columns:1fr}}
+.tile-history{list-style:none;margin:8px 0 0;padding:8px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.tile-history li{font-size:12px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tile-history b{color:var(--text);font-weight:500}

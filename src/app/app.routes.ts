@@ -8,7 +8,7 @@ import { MusicPage, ShippingPage } from './pages/live.pages';
 const suffix = ' · Yahya Berbeche';
 
 export const routes: Routes = [
-  { path: '', component: HomePage, title: 'Yahya Berbeche — Java Backend Developer' },
+  { path: '', component: HomePage, title: 'Yahya Berbeche — Software Engineer' },
   { path: 'work', component: WorkPage, title: 'Work' + suffix },
   { path: 'work/:id', component: CaseStudyPage }, // title set by the page itself.
   { path: 'experience', component: ExperiencePage, title: 'Experience' + suffix },

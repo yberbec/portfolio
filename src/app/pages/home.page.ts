@@ -3,7 +3,7 @@ import { DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { EMAIL, GITHUB_URL, LINKEDIN_URL } from '../data/portfolio.data';
 import { GithubService } from '../live/github.service';
-import { MusicService } from '../live/music.service';
+import { HISTORY_SIZE, MusicService } from '../live/music.service';
 import { WeatherService } from '../live/weather.service';
 import { DayStripComponent } from '../live/live-widgets';
 import { shortDate, timeAgo } from '../live/live-utils';
@@ -18,8 +18,8 @@ import { shortDate, timeAgo } from '../live/live-utils';
         <div class="status-line"><span class="status-dot"></span> AVAILABLE FOR OPPORTUNITIES <span class="status-location">· MONTRÉAL, CA</span></div>
         <p class="eyebrow pixel-font">HELLO, WORLD! I'M</p>
         <h1>Yahya<br><span>Berbeche</span><span class="period">.</span></h1>
-        <h2>Java Backend Developer</h2>
-        <p class="intro">Java backend developer with 7 years of experience building enterprise applications, microservices and integrations. I focus on reliable APIs, maintainable code and production-ready systems.</p>
+        <h2>Software Engineer</h2>
+        <p class="intro">Software engineer with 7 years of experience building enterprise applications, microservices and integrations. I focus on reliable APIs, maintainable code and production-ready systems.</p>
         <div class="hero-actions">
           <a class="button primary" routerLink="/work">Explore my work <span>↘</span></a>
           <a class="text-link" routerLink="/contact">Let's talk <span>↗</span></a>
@@ -109,6 +109,13 @@ import { shortDate, timeAgo } from '../live/live-utils';
           } @else if (music.current(); as t) {
             <strong>{{ t.name }}</strong>
             <p>{{ t.artist }} · {{ t.nowPlaying ? 'playing now' : ago(t.playedAt!) }}</p>
+            @if (earlierTracks().length) {
+              <ol class="tile-history" aria-label="Earlier plays">
+                @for (e of earlierTracks(); track $index) {
+                  <li><b>{{ e.name }}</b> · {{ e.artist }}</li>
+                }
+              </ol>
+            }
           } @else if (music.state() === 'ready') {
             <strong>Quiet for now</strong><p>No plays recorded yet.</p>
           } @else {
@@ -166,6 +173,12 @@ export class HomePage implements OnInit, OnDestroy {
   readonly shipLabel = computed(() => {
     const last = this.gh.latest();
     return last ? `SHIPPED ${shortDate(last.date).toUpperCase()}` : 'SHIPPING';
+  });
+
+  /** Plays before the headline track, so headline + list = the last 5 songs. */
+  readonly earlierTracks = computed(() => {
+    const current = this.music.current();
+    return this.music.history().filter(t => t !== current).slice(0, HISTORY_SIZE - 1);
   });
 
   readonly musicLabel = computed(() => {

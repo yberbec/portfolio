@@ -30,6 +30,9 @@ interface LfmTopArtists { topartists?: { artist: { name: string; playcount: stri
 const ENDPOINT = 'https://ws.audioscrobbler.com/2.0/';
 // Last.fm returns this grey star when it has no cover art.
 const PLACEHOLDER_ART = '2a96cbd8b46e442fc41c2b86b821562f';
+/** How many past plays the history shows. */
+export const HISTORY_SIZE = 5;
+const STORAGE_KEY = 'live:music:last-tracks';
 
 @Injectable({ providedIn: 'root' })
 export class MusicService {
@@ -37,9 +40,12 @@ export class MusicService {
   readonly profileUrl = LIVE_CONFIG.lastfm.user ? `https://www.last.fm/user/${LIVE_CONFIG.lastfm.user}` : 'https://www.last.fm';
 
   readonly state = signal<LoadState>('idle');
-  readonly tracks = signal<Track[]>([]);
+  /** Seeded from the last good response so a slow or failed Last.fm call never blanks the widgets. */
+  readonly tracks = signal<Track[]>(loadSaved());
   readonly topArtists = signal<TopArtist[]>([]);
   readonly current = computed<Track | null>(() => this.tracks().at(0) ?? null);
+  /** The last finished plays, newest first, without the track playing right now. */
+  readonly history = computed<Track[]>(() => this.tracks().filter(t => !t.nowPlaying).slice(0, HISTORY_SIZE));
 
   private timer?: number;
   private subscribers = 0;
@@ -69,14 +75,18 @@ export class MusicService {
   private async refresh(): Promise<void> {
     if (this.state() !== 'ready') this.state.set('loading');
     try {
-      const data = await this.call<LfmRecent>({ method: 'user.getrecenttracks', limit: '20' });
+      const data = await this.call<LfmRecent>({ method: 'user.getrecenttracks', limit: String(HISTORY_SIZE + 2) });
       if (data.error) throw new Error(data.message);
       const raw = data.recenttracks?.track ?? [];
-      const list = Array.isArray(raw) ? raw : [raw];
-      this.tracks.set(list.map(toTrack));
+      const tracks = (Array.isArray(raw) ? raw : [raw]).map(toTrack);
+      // An empty answer right after a non-empty one is usually a Last.fm hiccup: keep what we had.
+      if (tracks.length || !this.tracks().length) {
+        this.tracks.set(tracks);
+        save(tracks);
+      }
       this.state.set('ready');
     } catch {
-      if (!this.tracks().length) this.state.set('error');
+      this.state.set(this.tracks().length ? 'ready' : 'error');
     }
   }
 
@@ -99,4 +109,19 @@ function toTrack(t: LfmTrack): Track {
     nowPlaying: t['@attr']?.nowplaying === 'true',
     playedAt: t.date ? new Date(Number(t.date.uts) * 1000) : null
   };
+}
+
+function save(tracks: Track[]): void {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(tracks)); } catch { /* storage unavailable */ }
+}
+
+function loadSaved(): Track[] {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return [];
+    // A saved "now playing" flag is stale by definition, so restore everything as already played.
+    return (JSON.parse(raw) as Track[]).map(t => ({ ...t, nowPlaying: false, playedAt: t.playedAt ? new Date(t.playedAt) : null }));
+  } catch {
+    return [];
+  }
 }

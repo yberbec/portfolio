@@ -31,7 +31,7 @@ function fold(value: string): string {
 
 function buildIndex(): SearchEntry[] {
   const entries: SearchEntry[] = [
-    { section: 'Page', title: 'Home', path: ['/'], keywords: 'home start dev room welcome', text: 'Java backend developer with 7 years of experience building enterprise applications, microservices and integrations. I focus on reliable APIs, maintainable code and production-ready systems.' },
+    { section: 'Page', title: 'Home', path: ['/'], keywords: 'home start dev room welcome', text: 'Software engineer with 7 years of experience building enterprise applications, microservices and integrations. I focus on reliable APIs, maintainable code and production-ready systems.' },
     { section: 'Page', title: 'Work', path: ['/work'], keywords: 'projects portfolio case studies built', text: 'Things I have built. Case studies from Nespresso and Metro: ' + CASE_STUDIES.map(s => s.title).join(', ') + ', plus a personal job scraping application.' },
     { section: 'Page', title: 'Experience', path: ['/experience'], keywords: 'jobs career journey worked employment history', text: 'Where I have worked. 7 years in software: ' + EXPERIENCE.map(e => `${e.role} at ${e.company} (${e.dates})`).join('; ') + '.' },
     { section: 'Page', title: 'About', path: ['/about'], keywords: 'about me bio profile who', text: ABOUT_PARAGRAPHS.join(' ') },
@@ -39,7 +39,7 @@ function buildIndex(): SearchEntry[] {
     { section: 'Page', title: 'Education', path: ['/education'], keywords: 'education degrees school university studies diploma certifications credentials learning', text: 'Education & certifications. ' + EDUCATION.map(e => `${e.title}, ${e.detail} (${e.dates})`).join('. ') + '. ' + LANGUAGES_NOTE },
     { section: 'Page', title: 'Shipping', path: ['/shipping'], keywords: 'shipping github git commits merges pull requests releases activity contributions open source', text: 'What I shipped: live commits, pushes, merged pull requests and releases from my public GitHub repositories, with a contribution heatmap.' },
     { section: 'Page', title: 'Music', path: ['/music'], keywords: 'music listening now playing songs last.fm spotify record player', text: 'What I am playing right now: the current or last played track, recent plays and top artists, live from Last.fm.' },
-    { section: 'Page', title: 'Contact', path: ['/contact'], keywords: 'contact email hire reach linkedin github talk', text: `Let's build something that matters. Open to Java backend opportunities in Montréal and beyond. Send me a message through the contact form. ${EMAIL}`.trim() }
+    { section: 'Page', title: 'Contact', path: ['/contact'], keywords: 'contact email hire reach linkedin github talk', text: `Let's build something that matters. Open to software engineering opportunities in Montréal and beyond. Send me a message through the contact form. ${EMAIL}`.trim() }
   ];
 
   for (const s of CASE_STUDIES) {

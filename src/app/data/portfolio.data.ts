@@ -48,7 +48,7 @@ export const LINKEDIN_URL = 'https://www.linkedin.com/in/yahya-berbeche';
 export const GITHUB_URL = 'https://github.com/yberbec';
 
 export const ABOUT_PARAGRAPHS = [
-  "I'm a Java backend developer based in Montréal, Canada, with 7 years of experience delivering enterprise software for international e-commerce and Canadian retail environments.",
+  "I'm a software engineer based in Montréal, Canada, with 7 years of experience delivering enterprise software for international e-commerce and Canadian retail environments.",
   "I've worked across both Build and Production teams: designing integrations and microservices, improving code quality, monitoring live systems and collaborating with distributed, cross-functional teams. My core expertise is Java and Spring, complemented by frontend experience with Angular and TypeScript."
 ];
 
